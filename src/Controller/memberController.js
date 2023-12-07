@@ -1,5 +1,5 @@
 
-import Member from "../modle/members";
+import Member from "../model/members";
 
 
 
