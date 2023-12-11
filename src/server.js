@@ -2,12 +2,14 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import express  from "express";
 import dotenv from "dotenv"
+import routers from "./router"
 
 
 dotenv.config()
 
 const Farmers=express()
 Farmers.use(bodyParser.json())
+Farmers.use("/groupe",routers)
 
 const port=process.env.PORT
 const db=process.env.DATABASE
