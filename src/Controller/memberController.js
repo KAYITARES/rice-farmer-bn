@@ -68,9 +68,28 @@ class MemberController{
             return errormessage(res,201,`no member found`)
 
         }else{
-            return successmessage(res,201,`member on this ${id} was deleted`,member)
+            return successmessage(res,201,`member on this ${id} was deleted`)
         }
 
+    }
+
+    static async getone(req,res){
+        const id=req.params.id
+        const member=await Member.findById(id)
+        if(!member){
+            return errormessage(res,401,`no member found`)
+        }else{
+            return successmessage(res,201,`member on this id retrived`,member)
+        }
+    }
+
+    static async deletealll(req,res){
+        const member = await Member.deleteMany()
+        if(!member){
+            return errormessage(res,401,`no member found`)
+        }else{
+            return successmessage(res,201,`all  members of cooperative are deleted`)
+        }
     }
 }
 export default MemberController
