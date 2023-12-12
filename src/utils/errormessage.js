@@ -1,6 +1,6 @@
 
 function errormessage(res,stat,messag){
-    return res.status(stat).json({
+ return res.status(stat).json({
         message:messag
     })
 }
