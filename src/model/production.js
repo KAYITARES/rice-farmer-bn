@@ -30,11 +30,32 @@ const productSchemas=new mongoose.Schema({
         type:Array,
         required:true
     },
+    likes:{
+        type:Number,
+        default:0
+    },
+    dislikes:{
+        type:Number,
+        default:0 
+    },
+    comments:[
+        {
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Comment"
+    },
+    ],
     postAt:{
         type:Date,
         default:new Date(Date.now())
     }
 
+})
+productSchemas.pre(/^find/,function(next){
+    this.populate({
+        path:"comments",
+        select:"names email comment postAt"
+    })
+    next()
 })
 const Product=mongoose.model("Product",productSchemas)
 export default Product

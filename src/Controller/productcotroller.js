@@ -52,5 +52,31 @@ class Productcontroller{
             return successmessage(res,201,`product on this id ${id} deleted`)
         }
     }
+
+    static async Likes(req,res){
+        const productId=req.params.productId
+        const product=await Product.findById(productId)
+        if(!product){
+            return errormessage(res,401,`no product found to like`)
+        }else{
+            product.likes+=1
+            await product.save()
+            return successmessage(res,201,`product liked`,product)
+            
+        }
+    }
+    static async dislike(req,res){
+        const productId=req.params.productId
+        const product=await Product.findById(productId)
+        if(!product){
+            return errormessage(res,401,`no product found to dislike`)
+        }else{
+           
+            product.dislikes+=1
+            await product.save()
+            return successmessage(res,201,`product liked`,product)
+            
+        }
+    }
 }
 export default Productcontroller
