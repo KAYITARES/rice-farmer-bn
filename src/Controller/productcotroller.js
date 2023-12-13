@@ -1,6 +1,8 @@
 import Product from "../model/production";
 import errormessage from "../utils/errormessage";
 import successmessage from "../utils/successmessage";
+// import sendEmail from "../utils/email";
+// import Member from "../model/members";
 
 
 class Productcontroller{
@@ -10,6 +12,11 @@ class Productcontroller{
         if(!product){
             return errormessage(res,401,`product not posted`)
         }else{
+
+            // const members=await Member.find()
+            // members.map((member)=>{
+            //     sendEmail(member,product)
+            // })
             return successmessage(res,201,`prouct successfuly posted`,product)
         }
     }

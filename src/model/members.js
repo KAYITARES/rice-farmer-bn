@@ -3,7 +3,11 @@ import mongoose from "mongoose";
 
 
 const memberschemas=new mongoose.Schema({
-    fullnames:{
+    firstname:{
+        type:String,
+        required:true
+    },
+    lastname:{
         type:String,
         required:true
     },

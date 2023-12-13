@@ -5,10 +5,12 @@ import errormessage from "../utils/errormessage";
 class Datachecker{
 
     static  memberRegistIsEmpt(req,res,next){
-        const {fullnames,identification,location,farmer,email,password,confrimpassword}=req.body
+        const {firstname,lastname,identification,location,farmer,email,password,confrimpassword}=req.body
 
-        if(fullnames==""){
+        if(firstname==""){
             return errormessage(res,401,`please provide your names`)  
+        }else  if(lastname==""){
+            return errormessage(res,401,`please provide your names`) 
         }else if(identification==""){
             return errormessage(res,401,`please provide your id`)
         }else if(location==""){
