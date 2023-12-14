@@ -11,7 +11,7 @@ class MemberController{
 
     static async registration(req,res){
 
-        const {fullnames,identification,location,farmer,email,password,confrimpassword,role}=req.body
+        const {firstname,lastname,identification,location,farmer,email,password,confrimpassword,role}=req.body
 
         if(req.body.password!==req.body.confrimpassword){
             return errormessage(res,401,`pleace password and confrim password miss match`)
@@ -21,7 +21,7 @@ class MemberController{
 
         const hashpassword = bcrypt.hashSync(req.body.password,10)
         
-        const member = await Member.create({fullnames,identification,location,farmer,email,password:hashpassword,confrimpassword,role})
+        const member = await Member.create({firstname,lastname,identification,location,farmer,email,password:hashpassword,confrimpassword,role})
 
         if(!member){
             return errormessage(res,401,`please you have error in your information`)
@@ -89,6 +89,16 @@ class MemberController{
             return errormessage(res,401,`no member found`)
         }else{
             return successmessage(res,201,`all  members of cooperative are deleted`)
+        }
+    }
+
+    static async updatemember(req,res){
+        const id=req.params.id
+        const member=await Member.findByIdAndUpdate(id,req.body,{new:true})
+        if(!member){
+            return errormessage(rs,401,`no member found`)
+        }else{
+            return successmessage(res,201,`success member updated`,member)
         }
     }
 }

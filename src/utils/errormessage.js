@@ -1,8 +1,6 @@
-
-function errormessage(res,stat,messag){
- return res.status(stat).json({
-        message:messag
+const errormessage=(res,status,messg,datas)=>{
+    res.status(status).json({
+        message:messg
     })
 }
-
 export default errormessage
