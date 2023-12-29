@@ -24,7 +24,7 @@ class Productcontroller{
     static async getallproduct(req,res){
         const product=await Product.find()
         if(!product){
-            return errormessage(res,401,`no product found in stoct`)
+            return errormessage(res,401,`no product found in stock`)
 
         }else{
             return successmessage(res,401,`this is all ${product.length} product available to buy`,product)

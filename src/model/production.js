@@ -11,7 +11,7 @@ const productSchemas=new mongoose.Schema({
         required:true
     },
     price:{
-        type:String,
+        type:Number,
         required:true
     },
     proDate:{
@@ -24,6 +24,10 @@ const productSchemas=new mongoose.Schema({
     },
     descliption:{
         type:String,
+        required:true
+    },
+    quantityAvailable:{
+        type:Number,
         required:true
     },
     images:{
