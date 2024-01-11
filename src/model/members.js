@@ -15,14 +15,15 @@ const memberschemas=new mongoose.Schema({
         type:Number,
         required:true
     },
+    phonenumber:{
+        type:Number,
+        required:true
+    },
     location:{
         type:Array,
         required:true
     },
-    farmer:{
-        type:Boolean,
-        required:true
-    },
+
     email:{
         type:String,
         required:true

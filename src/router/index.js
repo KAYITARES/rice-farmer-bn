@@ -7,6 +7,7 @@ import annouRouter from "./annouRouter"
 import custommerRouter from "./custommerRouter"
 import messagerouter from "./messagerouter"
 import oderRoute from "./oderRoute"
+import productionRouter from "./productionsRouter"
 
 
 const router =express.Router()
@@ -17,5 +18,6 @@ router.use("/announcement",annouRouter)
 router.use("/custommer",custommerRouter)
 router.use("/contact-us",messagerouter)
 router.use("/oder",oderRoute)
+router.use("/memberproduct",productionRouter)
 
 export default router
