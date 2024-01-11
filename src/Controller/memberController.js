@@ -11,17 +11,16 @@ class MemberController{
 
     static async registration(req,res){
 
-        const {firstname,lastname,identification,location,farmer,email,password,confrimpassword,role}=req.body
+        const {firstname,lastname,identification,location,email,password,confrimpassword,role}=req.body
 
         if(req.body.password!==req.body.confrimpassword){
             return errormessage(res,401,`pleace password and confrim password miss match`)
-        }else if(farmer==false){
-            return errormessage(res,401,`please you are not allowed to join us because you are not a farmer`)
         }
 
         const hashpassword = bcrypt.hashSync(req.body.password,10)
         
-        const member = await Member.create({firstname,lastname,identification,location,farmer,email,password:hashpassword,confrimpassword,role})
+        const member = await Member.create({firstname,lastname,identification,location,farmer,email,password:hashpassword,
+            confrimpassword,role})
 
         if(!member){
             return errormessage(res,401,`please you have error in your information`)

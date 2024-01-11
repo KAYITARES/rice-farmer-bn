@@ -13,10 +13,6 @@ class Productcontroller{
             return errormessage(res,401,`product not posted`)
         }else{
 
-            // const members=await Member.find()
-            // members.map((member)=>{
-            //     sendEmail(member,product)
-            // })
             return successmessage(res,201,`prouct successfuly posted`,product)
         }
     }
@@ -52,12 +48,15 @@ class Productcontroller{
 
     static async deleteone(req,res){
         const id=req.params.id
+        
         const product=await Product.findByIdAndDelete(id)
-        if(!product){
-            return errormessage(res,401,`no product found`)
-        }else{
-            return successmessage(res,201,`product on this id ${id} deleted`)
+            if(!product){
+                return errormessage(res,401,`no product found`)
+            }else{
+                return successmessage(res,201,`product on this id ${id} deleted`)
         }
+       
+       
     }
 
     static async Likes(req,res){
