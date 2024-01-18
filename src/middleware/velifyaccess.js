@@ -14,8 +14,8 @@ function VelifyAccess(passRole){
             try {
                 const velifytoken=Jwt.verify(token,process.env.SCRET_KY,{expiresIn:"1d"})
 
-                req.member=velifytoken.member
-                if(passRole!==velifytoken.member.role){
+                req.user=velifytoken.user
+                if(passRole!==velifytoken.user.role){
                     return errormessage(res,401,`you don't have access`)
                 }else{
                     return next()          

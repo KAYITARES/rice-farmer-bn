@@ -2,7 +2,7 @@
 import mongoose from "mongoose";
 
 
-const memberschemas=new mongoose.Schema({
+const userchemas=new mongoose.Schema({
     firstname:{
         type:String,
         required:true
@@ -20,7 +20,7 @@ const memberschemas=new mongoose.Schema({
         required:true
     },
     location:{
-        type:Array,
+        type:String,
         required:true
     },
 
@@ -36,10 +36,14 @@ const memberschemas=new mongoose.Schema({
         type:String,
         required:true
     },
+    picture: { type: String,required:true },
+    landReport: { type: String, required:true},
+    idPhotocopy: { type: String, required:true},
+    letter:{type:String ,required:true},
     role:{
         type:String,
-        enum:["member","admin"],
-        default:"member"
+        enum:["user","member","admin"],
+        default:"user"
     },
     signedAt:{
         type:Date,
@@ -47,5 +51,5 @@ const memberschemas=new mongoose.Schema({
     }
 
 })
-const Member=mongoose.model("Member",memberschemas)
-export default Member
+const User=mongoose.model("User",userchemas)
+export default User
